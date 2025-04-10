@@ -16,3 +16,12 @@ for i in my_list:
     df[i] = df[i].astype(int)
 
 print(df)
+
+df1 = df.sort_values('Count',ascending= False).reset_index(drop= True)
+print(df1)
+df1 = df[['Location','Count']].sort_values(by = 'Count',ascending= False).head(5)
+df1['Percentage'] = (df1['Count'] * 100 /df1['Count'].sum()).__round__(2)
+print(df1)
+
+df1.plot(x = 'Location' , y='Count' , kind = 'pie' , labels = df1.Location , autopct = '%1.2f%%')
+print(plt.show())
